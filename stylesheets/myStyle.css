@@ -1,0 +1,8 @@
+.loginContainer {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.loginContainer input {
+  padding: 5px 10px;
+}
