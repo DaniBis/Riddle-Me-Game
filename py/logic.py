@@ -29,13 +29,17 @@ def write_to_file(filename, data):
     with open(filename, "a") as file:
         file.writelines(data)
 
-@app.route("/")
-def layout():
-    return render_template('login.html')
+@app.route("/layout", methods=['POST'])
+def pickUsername():
+    if request.method == 'POST':
+        newUsername = User(request.form['username'])
+        db.session.add(newUsername)
+        db.session.commit()
+    return render_template('layout.html')
 
-@app.route("/home")
+@app.route("/" , methods=["GET", "POST"])
 def home():
-    return render_template('home.html')
+    return render_template('login.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
